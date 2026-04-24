@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #1B2A3D;
+    --gold: #8B6F3A;
+    --gold-light: #B08D4C;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Sprint 10.3 fix — fallback background so any hero section whose
+       full-width render ever fails short doesn't expose a bright bg. */
+    background-color: #1B2A3D;
+    /* Prevent horizontal scroll caused by overflowing header chrome on
+       intermediate viewport widths (dev toggle + role switcher + currency). */
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif text-ink;
+    letter-spacing: -0.01em;
+  }
+  h1 { @apply text-4xl md:text-5xl font-semibold leading-tight; }
+  h2 { @apply text-3xl md:text-4xl font-semibold leading-tight; }
+  h3 { @apply text-xl md:text-2xl font-semibold; }
+  p  { @apply text-ink-muted leading-relaxed; }
+  a  { @apply transition-colors; }
+  ::selection { @apply bg-gold/20 text-navy; }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .surface-card {
+    @apply bg-bg-white border border-ink-line rounded-xl shadow-card;
+  }
+  .surface-card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink-line px-2.5 py-1 text-xs font-medium text-ink-muted;
+  }
+  .band-navy {
+    @apply bg-navy-gradient text-white relative overflow-hidden;
+  }
+  .band-navy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--pattern-dots);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .kpi-number {
+    @apply font-serif text-4xl md:text-5xl font-semibold leading-none;
+    font-variant-numeric: tabular-nums;
+  }
+  .link-gold {
+    @apply text-gold hover:text-gold-dark underline-offset-4 hover:underline;
+  }
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg-white;
+  }
+}
+
+@layer utilities {
+  .scrollbar-slim::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-slim::-webkit-scrollbar-thumb { @apply bg-ink-line rounded-full; }
+  .scrollbar-slim::-webkit-scrollbar-thumb:hover { @apply bg-ink-muted/40; }
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in { animation: fade-in 0.18s ease-out; }
+}
