@@ -1,0 +1,17 @@
+/* SVG-based background patterns used on navy/hero bands. */
+:root {
+  --pattern-dots: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='1' cy='1' r='1' fill='%23B08D4C' fill-opacity='0.20'/></svg>");
+  --pattern-grid: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 0H40' stroke='%23FFFFFF' stroke-opacity='0.06'/><path d='M0 0V40' stroke='%23FFFFFF' stroke-opacity='0.06'/></svg>");
+  --pattern-diag: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path d='M0 8L8 0' stroke='%23B08D4C' stroke-opacity='0.12'/></svg>");
+}
+
+.pattern-dots { background-image: var(--pattern-dots); }
+.pattern-grid { background-image: var(--pattern-grid); }
+.pattern-diag { background-image: var(--pattern-diag); }
+
+.hero-glow {
+  background:
+    radial-gradient(1200px 500px at 15% -10%, rgba(176,141,76,0.22) 0%, transparent 55%),
+    radial-gradient(1000px 420px at 85% 110%, rgba(91,141,184,0.12) 0%, transparent 60%),
+    linear-gradient(135deg, #1B2A3D 0%, #2A3F58 55%, #1B2A3D 100%);
+}
